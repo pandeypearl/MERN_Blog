@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body{
   color: #333;
 }
@@ -63,8 +67,34 @@ div.post div.content p.info a.author{
 div.post div.content p.description{
   margin: 10px 0;
   line-height: 1.5rem;
-
 }
 
+form.login, form.register{
+  max-width: 400px;
+  margin: 0 auto;
+}
 
+form input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+}
+
+form button{
+  width: 100%;
+  background-color: #555;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  padding: 7px 0;
+  cursor: pointer;
+}
+
+form h1{
+  text-align: center;
+}
 
