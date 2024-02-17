@@ -158,3 +158,22 @@ div.post-wrapper a{
 div.post-content p{
   line-height: 1.6rem;
 }
+
+div.edit{
+  margin: 20px 0;
+}
+
+div.post-wrapper a.edit-btn{
+  background-color: #333;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+}
+
+div.post-wrapper a.edit-btn svg{
+  height: 20px;
+}
