@@ -29,6 +29,16 @@ header a {
   color: inherit;
 }
 
+header nav .user{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+header nav .user svg{
+  height: 20px;
+}
+
 header a.logo{
   font-weight: 900;
   font-size: 1.6rem;
