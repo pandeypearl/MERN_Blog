@@ -41,14 +41,33 @@ header nav{
 
 div.post{
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 10px;
   margin-bottom: 30px;
+}
+
+div.post div.image img{
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+@media screen and (min-width: 768) {
+  div.post{
+    grid-template-columns: 0.9fr 1.1fr;
+  }
 }
   
 div.post div.content h2{
   margin: 0;
   font-size: 1.8rem;
+}
+
+div.post div.content a{
+  text-decoration: none;
+  color: inherit;
 }
 
 div.post div.content p.info{
@@ -98,3 +117,44 @@ form.login h1, form.register h1{
   text-align: center;
 }
 
+div.post-wrapper div.cover-image{
+  max-height: 300px;
+  display: flex;
+  overflow: hidden;
+}
+
+div.post-wrapper div.cover-image img{
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+}
+
+div.post-wrapper h1{
+  margin-bottom: 0;
+}
+
+
+div.post-wrapper a{
+  color: #333;
+  text-decoration: underline;
+}
+
+.post-info{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+}
+
+.post-info time{
+  color: #aaa;
+}
+
+
+.post-info .author{
+  font-weight: bold;
+}
+
+div.post-content p{
+  line-height: 1.6rem;
+}
