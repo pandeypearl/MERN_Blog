@@ -6,6 +6,9 @@
   /* --brand: #654EB0; */
   --brand: #9D68FF;
   --tertiary: #6D676E;
+  /* --shadow: 2px 2px 2px rgba(0,0,0,0.4);  */
+  --shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
+  --brand-shadow: 3px 3px 10px 3px rgb(157, 104, 255, 0.2);
 }
 
 .dark-mode{
@@ -16,6 +19,7 @@
 .light-mode{
   --main: #FFFFFF;
   --secondary: #E7DBE9;
+  
 }
 
 body{
@@ -68,6 +72,10 @@ header nav{
   gap: 15px;
 }
 
+header nav a{
+  transition: text-decoration 0.3s ease-in-out;
+}
+
 header nav a:hover{
   text-decoration: underline;
   text-decoration-color: var(--brand);
@@ -75,11 +83,25 @@ header nav a:hover{
   text-decoration-thickness: 2px;
 }
 
+.post-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-link:hover div.post{
+  border: 1px solid rgb(157, 104, 255, 0.1);
+  box-shadow: var(--brand-shadow);
+}
+
 div.post{
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: .9fr 1.1fr;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgb(0,0,0,0.1);
+  padding: 10px;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 div.post div.image img{
@@ -89,16 +111,15 @@ div.post div.image img{
   object-position: center center;
 }
 
-
-@media screen and (min-width: 768) {
+@media (max-width: 600px) {
   div.post{
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 1fr;
   }
 }
   
 div.post div.content h2{
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 div.post div.content a{
@@ -108,15 +129,20 @@ div.post div.content a{
 
 div.post div.content p.info{
   margin: 5px 0;
-  color: #888;
+  color: var(--tertiary);
   font-size: 0.8rem;
-  font-weight: 900;
   display: flex;
   gap: 10px;
 }
 
+div.post div.content p.info time{
+  font-weight: 200;
+}
+
+
 div.post div.content p.info a.author{
-  color: #333;
+  color: var(--brand);
+  font-weight: 600;
 }
 
 div.post div.content p.description{
