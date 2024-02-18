@@ -2,6 +2,22 @@
   box-sizing: border-box;
 }
 
+:root{
+  /* --brand: #654EB0; */
+  --brand: #9D68FF;
+  --tertiary: #6D676E;
+}
+
+.dark-mode{
+  --main: #1B1B1E;
+  --secondary: #3C3C43;
+}
+
+.light-mode{
+  --main: #FFFFFF;
+  --secondary: #E7DBE9;
+}
+
 body{
   color: #333;
 }
@@ -37,16 +53,26 @@ header nav .user{
 
 header nav .user svg{
   height: 20px;
+  color: var(--brand);
 }
+
 
 header a.logo{
   font-weight: 900;
   font-size: 1.6rem;
+  color: var(--brand);
 }
 
 header nav{
   display: flex;
   gap: 15px;
+}
+
+header nav a:hover{
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 
 div.post{
