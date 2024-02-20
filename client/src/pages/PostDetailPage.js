@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import {formatISO9075} from 'date-fns';
 import { UserContext } from "../utils/UserContext";
+import PostFooter from "../components/PostFooter";
 
 export default function PostDetailPage() {
     const {userInfo} = useContext(UserContext);
@@ -20,8 +21,9 @@ export default function PostDetailPage() {
     if (!postInfo) return '';
 
     return (
-        <div className='post-wrapper'>
-        
+      <>
+          <div className='post-wrapper'>
+          
           <h1>{postInfo.title}</h1>
 
           <div className='post-info'>
@@ -49,5 +51,8 @@ export default function PostDetailPage() {
             
           
         </div>
+        <PostFooter />
+      </>
+        
     );
 }
