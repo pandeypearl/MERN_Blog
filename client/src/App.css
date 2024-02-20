@@ -145,6 +145,10 @@ div.post div.content p.info a.author{
   font-weight: 600;
 }
 
+div.post div.content p.info .view-count{
+  color: var(--brand);
+}
+
 div.post div.content p.description{
   margin: 10px 0;
   line-height: 1.5rem;

@@ -83,6 +83,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
       content,
       cover:newPath,
       author:info.id,
+      viewCount: 0,
     });
     res.json(postDoc);
   });
@@ -101,7 +102,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
   const {token} = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
-    const {id, title, summary, content} = req.body;
+    const {id, title, summary, content, viewCount} = req.body;
     const postDoc = await Post.findById(id);
     const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
     if (!isAuthor) {
@@ -112,9 +113,12 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
       summary, 
       content,
       cover: newPath ? newPath : postDoc.cover,
+      viewCount: viewCount || postDoc.viewCount,
     });
 
-    res.json(postDoc);
+    const updatedPost = await Post.findById(id);
+
+    res.json(updatedPost);
   });
 })
 
@@ -130,6 +134,37 @@ app.get('/post/:id', async (req, res) => {
   const {id} = req.params;
   const postDoc = await Post.findById(id).populate('author', ['username']);
   res.json(postDoc);
-})
+});
+
+
+app.post('/post/:id/updateViewCount', async (req, res) => {
+  const { id } = req.params;
+  const {token} = req.cookies; // Assuming the JWT token is stored in a cookie named 'token'
+
+  try {
+    if (!token) {
+      return res.status(401).json({ error: 'JWT token is missing' });
+    }
+
+    // Verify JWT token
+    jwt.verify(token, secret, {}, async (err, info) => {
+      if (err) {
+        return res.status(401).json({ error: 'Invalid JWT token' });
+      }
+
+      // Find the post by its ID and update the view count field
+      const updatedPost = await Post.findByIdAndUpdate(id, { $inc: { viewCount: 1 } }, { new: true });
+      if (!updatedPost) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+
+      // Respond with the updated post
+      res.json(updatedPost);
+    });
+  } catch (error) {
+    console.error('Error updating view count:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 app.listen(4000);

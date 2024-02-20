@@ -7,6 +7,10 @@ const PostSchema = new Schema({
     content:String,
     cover:String,
     author:{type:Schema.Types.ObjectId, ref:'User'},
+    viewCount: {
+        type: Number,
+        default: 0
+    }
 }, {
     timestamps: true,
 });

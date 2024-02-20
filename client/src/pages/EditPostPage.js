@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import Editor from '../components/Editor';
 
+
 export default function EditPostPage() {
   const {id} = useParams();
   const [title, setTitle] = useState('');
