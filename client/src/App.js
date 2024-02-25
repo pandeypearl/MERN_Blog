@@ -8,20 +8,23 @@ import { UserContextProvider } from './utils/UserContext';
 import CreatePost from './pages/CreatePost';
 import PostDetailPage from './pages/PostDetailPage';
 import EditPostPage from './pages/EditPostPage';
+import { LightDarkModeProvider } from './utils/LightDarkModeContext';
 
 function App() {
   return (
     <UserContextProvider>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/new-post' element={<CreatePost />} />
-          <Route path='/post/:id' element={<PostDetailPage />} />
-          <Route path='/edit/:id' element={<EditPostPage />} />
-        </Route>
-      </Routes>
+      <LightDarkModeProvider>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/new-post' element={<CreatePost />} />
+            <Route path='/post/:id' element={<PostDetailPage />} />
+            <Route path='/edit/:id' element={<EditPostPage />} />
+          </Route>
+        </Routes>
+      </LightDarkModeProvider>
     </UserContextProvider>
   );
 }
