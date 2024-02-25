@@ -1,16 +1,12 @@
-import { useState } from "react";
+import { useLightDarkMode } from "../utils/LightDarkModeContext";
 
 export default function ToggleButton() {
-    const [isLightMode, setIsLightMode] = useState(true);
-
-    const handleToggle = () => {
-        setIsLightMode(prevMode => !prevMode);
-    };
+    const { isLightMode, toggleMode } = useLightDarkMode();
 
     return (
         <div className='toggle-wrapper'>
             <label className='toggle-btn'>
-                <input type='checkbox' checked={isLightMode} onChange={handleToggle} />
+                <input type='checkbox' checked={isLightMode} onChange={toggleMode} />
                 <span className='toggle-btn-label'>
                     <span className='toggle-btn-handle'></span>
                 </span>
