@@ -2,16 +2,13 @@
   box-sizing: border-box;
 }
 
-body{
-  color: #333;
-}
-
 :root{
   /* --brand: #654EB0; */
   --brand: #9D68FF;
   --tertiary: #6D676E;
   /* --shadow: 2px 2px 2px rgba(0,0,0,0.4);  */
   --shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
+  --btn-shadow: 2px 2px 2px rgb(0, 0, 0, 0.2);
   --brand-shadow: 3px 3px 10px 3px rgb(157, 104, 255, 0.2);
 }
 
@@ -26,11 +23,30 @@ body{
   --secondary: #E7DBE9;
 }
 
+
+body{
+  color: #333;
+  background-color: var(--main);
+}
+
+
+img{
+  max-width: 100%;
+}
+
+main{
+  padding: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--main);
+}
+
 /* Styling for the toggle button */
 .toggle-wrapper{
-  position: absolute;
-  left: 50px;
-  top: 14vh;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .toggle-btn {
@@ -55,7 +71,7 @@ body{
   border: 1px solid var(--brand);
   border-radius: 34px;
   transition: background-color 0.3s;
-  box-shadow: var(--button-shadow);
+  box-shadow: var(--btn-shadow);
 }
 
 .toggle-btn input[type="checkbox"]:checked + .toggle-btn-label {
@@ -75,16 +91,6 @@ transition: transform 0.3s;
 
 .toggle-btn input[type="checkbox"]:checked + .toggle-btn-label .toggle-btn-handle {
 transform: translateX(26px); /* Position of the handle when toggled */
-}
-
-img{
-  max-width: 100%;
-}
-
-main{
-  padding: 10px;
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 header{
