@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body{
+  color: #333;
+}
+
 :root{
   /* --brand: #654EB0; */
   --brand: #9D68FF;
@@ -11,6 +15,7 @@
   --brand-shadow: 3px 3px 10px 3px rgb(157, 104, 255, 0.2);
 }
 
+
 .dark-mode{
   --main: #1B1B1E;
   --secondary: #3C3C43;
@@ -19,11 +24,57 @@
 .light-mode{
   --main: #FFFFFF;
   --secondary: #E7DBE9;
-  
 }
 
-body{
-  color: #333;
+/* Styling for the toggle button */
+.toggle-wrapper{
+  position: absolute;
+  left: 50px;
+  top: 14vh;
+}
+
+.toggle-btn {
+  display: inline-block;
+  width: 52px;
+  height: 26px;
+  position: relative;
+}
+
+.toggle-btn input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-btn-label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--main);
+  border: 1px solid var(--brand);
+  border-radius: 34px;
+  transition: background-color 0.3s;
+  box-shadow: var(--button-shadow);
+}
+
+.toggle-btn input[type="checkbox"]:checked + .toggle-btn-label {
+background-color: var(--main); /* Color when the button is toggled */
+}
+
+.toggle-btn-handle {
+position: absolute;
+top: 2px;
+left: 2px;
+width: 20px;
+height: 20px;
+background-color: var(--brand);
+border-radius: 50%;
+transition: transform 0.3s;
+}
+
+.toggle-btn input[type="checkbox"]:checked + .toggle-btn-label .toggle-btn-handle {
+transform: translateX(26px); /* Position of the handle when toggled */
 }
 
 img{
