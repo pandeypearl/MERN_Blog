@@ -5,7 +5,6 @@
 :root{
   /* --brand: #654EB0; */
   --brand: #9D68FF;
-  --tertiary: #6D676E;
   /* --shadow: 2px 2px 2px rgba(0,0,0,0.4);  */
   --shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
   --btn-shadow: 2px 2px 2px rgb(0, 0, 0, 0.2);
@@ -14,19 +13,25 @@
 
 
 .dark-mode{
-  --main: #1B1B1E;
-  --secondary: #3C3C43;
+  --darkest: #1B1B1E;
+  --dark: #3C3C43;
+  --mid: #6D676E;
+  --light: #E7DBE9;
+  --lightest: #FFFFFF;
 }
 
 .light-mode{
-  --main: #FFFFFF;
-  --secondary: #E7DBE9;
+  --darkest: #FFFFFF;
+  --dark: #E7DBE9;
+  --mid: #6D676E;
+  --light: #3C3C43;
+  --lightest: #1B1B1E;
 }
 
 
 body{
-  color: #333;
-  background-color: var(--main);
+  color: var(--lightest);
+  background-color: var(--darkest);
 }
 
 
@@ -67,7 +72,7 @@ main{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--main);
+  background-color: var(--darkest);
   border: 1px solid var(--brand);
   border-radius: 34px;
   transition: background-color 0.3s;
@@ -75,7 +80,7 @@ main{
 }
 
 .toggle-btn input[type="checkbox"]:checked + .toggle-btn-label {
-background-color: var(--main); /* Color when the button is toggled */
+background-color: var(--darkest); /* Color when the button is toggled */
 }
 
 .toggle-btn-handle {
@@ -186,7 +191,7 @@ div.post div.content a{
 
 div.post div.content p.info{
   margin: 5px 0;
-  color: var(--tertiary);
+  color: var(--mid);
   font-size: 0.8rem;
   display: flex;
   gap: 10px;
@@ -221,17 +226,17 @@ form input {
   margin-bottom: 10px;
   width: 100%;
   padding: 5px 8px;
-  border: 1px solid #ddd;
-  background-color: white;
+  border: 1px solid var(--dark);
+  background-color: var(--darkest);
   border-radius: 5px;
 }
 
 form button{
   width: 100%;
-  background-color: #555;
+  background-color: var(--dark);
   border: 0;
   border-radius: 5px;
-  color: white;
+  color: var(--light);
   padding: 7px 0;
   cursor: pointer;
 }
@@ -258,7 +263,7 @@ div.post-wrapper h1{
 
 
 div.post-wrapper a{
-  color: #333;
+  color: var(--dark);
   text-decoration: underline;
 }
 
@@ -270,7 +275,7 @@ div.post-wrapper a{
 }
 
 .post-info time{
-  color: #aaa;
+  color: var(--lightest);
 }
 
 
@@ -287,8 +292,8 @@ div.edit{
 }
 
 div.post-wrapper a.edit-btn{
-  background-color: #333;
-  color: white;
+  background-color: var(--dark);
+  color: var(--light);
   padding: 10px 30px;
   border-radius: 5px;
   display: inline-flex;
@@ -322,14 +327,14 @@ div.post-wrapper a.edit-btn svg{
   text-decoration: none;
   border-radius: 5px;
   background: var(--brand);
-  color: white;
+  color: var(--darkest);
   box-shadow: 3px 3px 3px rgb(0,0,0,0.2);
   border: 1px solid var(--brand);
   transition: background 0.5s ease-in-out, color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
 
 .post-footer a:hover{
-  background: white;
+  background: var(--darkest);
   color: var(--brand);
   box-shadow: 3px 3px 3px rgb(0,0,0,0.4);
 }
