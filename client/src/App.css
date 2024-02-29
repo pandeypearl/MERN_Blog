@@ -151,8 +151,7 @@ header nav a:hover{
 }
 
 .post-link:hover div.post{
-  border: 1px solid rgb(157, 104, 255, 0.1);
-  box-shadow: var(--brand-shadow);
+  border: 1px solid rgb(157, 104, 255, 0.4);
 }
 
 div.post{
@@ -163,7 +162,7 @@ div.post{
   box-shadow: var(--shadow);
   border: 1px solid rgb(0,0,0,0.1);
   padding: 10px;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
 }
 
 div.post div.image img{
