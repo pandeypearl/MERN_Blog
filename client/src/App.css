@@ -216,6 +216,10 @@ div.post div.content p.description{
   line-height: 1.5rem;
 }
 
+form {
+  margin: 50px 0;
+}
+
 form.login, form.register{
   max-width: 400px;
   margin: 0 auto;
@@ -229,16 +233,26 @@ form input, form textarea {
   border: 1px solid var(--mid);
   background-color: var(--darkest);
   border-radius: 5px;
+  outline: none;
+  color: var(--lightest);
 }
 
 form button{
   width: 100%;
-  background-color: var(--brand);
-  border: 0;
-  border-radius: 5px;
-  color: var(--darkest);
-  padding: 7px 0;
+  background-color: var(--darkest);
+  border: 1px solid var(--brand);
+  border-radius: 20px;
+  color: var(--brand);
+  padding: 10px 0;
   cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+form button:hover{
+  background-color: var(--brand);
+  color: var(--darkest);
+  box-shadow: 3px 3px 3px rgb(0,0,0,0.4);
 }
 
 form.login h1, form.register h1{
