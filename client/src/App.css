@@ -292,14 +292,23 @@ div.edit{
 }
 
 div.post-wrapper a.edit-btn{
-  background-color: var(--dark);
-  color: var(--light);
+  background-color: var(--darkest);
+  color: var(--brand);
+  border: 1px solid var(--brand);
   padding: 10px 30px;
-  border-radius: 5px;
+  border-radius: 20px;
   display: inline-flex;
   gap: 10px;
   align-items: center;
   text-decoration: none;
+  box-shadow: var(--btn-shadow);
+  transition: background-color 0.3s ease-in-out;
+}
+
+div.post-wrapper a.edit-btn:hover{
+  background-color: var(--brand);
+  color: var(--darkest);
+  box-shadow: 3px 3px 3px rgb(0,0,0,0.4);
 }
 
 div.post-wrapper a.edit-btn svg{
@@ -325,16 +334,17 @@ div.post-wrapper a.edit-btn svg{
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  border-radius: 5px;
-  background: var(--brand);
-  color: var(--darkest);
+  border-radius: 20px;
+  background: var(--darkest);
+  color: var(--brand);
+  border: 1px solid var(--brand);
   box-shadow: 3px 3px 3px rgb(0,0,0,0.2);
   border: 1px solid var(--brand);
-  transition: background 0.5s ease-in-out, color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .post-footer a:hover{
-  background: var(--darkest);
-  color: var(--brand);
+  background: var(--brand);
+  color: var(--darkest);
   box-shadow: 3px 3px 3px rgb(0,0,0,0.4);
 }
