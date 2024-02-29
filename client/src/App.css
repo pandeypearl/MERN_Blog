@@ -221,22 +221,22 @@ form.login, form.register{
   margin: 0 auto;
 }
 
-form input {
+form input, form textarea {
   display: block;
   margin-bottom: 10px;
   width: 100%;
   padding: 5px 8px;
-  border: 1px solid var(--dark);
+  border: 1px solid var(--mid);
   background-color: var(--darkest);
   border-radius: 5px;
 }
 
 form button{
   width: 100%;
-  background-color: var(--dark);
+  background-color: var(--brand);
   border: 0;
   border-radius: 5px;
-  color: var(--light);
+  color: var(--darkest);
   padding: 7px 0;
   cursor: pointer;
 }
