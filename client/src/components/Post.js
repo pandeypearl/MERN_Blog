@@ -1,7 +1,7 @@
 import {formatISO9075} from 'date-fns';
 import { Link } from 'react-router-dom';
 
-export default function Post({_id, title, summary, cover, content, createdAt, author, viewCount}) {
+export default function Post({_id, title, summary, cover, content, createdAt, author, viewCount, sharableLink}) {
     return (
       <Link className='post-link' to={`/post/${_id}`}>
         <div className='post'>

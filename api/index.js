@@ -84,6 +84,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
       cover:newPath,
       author:info.id,
       viewCount: 0,
+      sharableLink,
     });
     res.json(postDoc);
   });
@@ -114,6 +115,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
       content,
       cover: newPath ? newPath : postDoc.cover,
       viewCount: viewCount || postDoc.viewCount,
+      sharableLink,
     });
 
     const updatedPost = await Post.findById(id);
@@ -164,6 +166,23 @@ app.post('/post/:id/updateViewCount', async (req, res) => {
   } catch (error) {
     console.error('Error updating view count:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/post/:id/share', async (req, res) => {
+  const { id } = req.params;
+
+  try{
+    // Generating unique sharable link
+    const uniqueId = shortid.generate();
+    const sharableLink = `http:localhost:3000/share/${uniqueId}`;
+
+    // Updating post with sharable link
+    await Post.findByIdAndUpdate(id, { sharableLink });
+    res.status(200).json({ sharableLink });
+  } catch (error) {
+    console.error('Error sharing post:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

@@ -10,7 +10,8 @@ const PostSchema = new Schema({
     viewCount: {
         type: Number,
         default: 0
-    }
+    },
+    sharableLink:String,
 }, {
     timestamps: true,
 });

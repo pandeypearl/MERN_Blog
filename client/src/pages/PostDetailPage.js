@@ -10,7 +10,8 @@ export default function PostDetailPage() {
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   const [postInfo, setPostInfo] = useState(null);
-  // const [viewCount, setViewCount] = useState(0);
+  const [shareableLink, setShareableLink] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     // Fetching post details including view count
@@ -31,6 +32,11 @@ export default function PostDetailPage() {
           credentials: 'include',
           body: JSON.stringify({}),
         });
+
+        // Fetch shareable link when component mounts
+        const shareResponse = await fetch(`http://localhost:4000/post/${id}/share`);
+        const shareData = await shareResponse.json();
+        setShareableLink(shareData.sharableLink);
       } catch (error) {
         console.error('Error fetching post details:', error);
       }
@@ -39,34 +45,11 @@ export default function PostDetailPage() {
     fetchPostDetails();
   }, [id]);
 
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/post/${id}`)
-  //       .then(response => {
-  //         response.json().then(postInfo => {
-  //           setPostInfo(postInfo);
-  //         })
-  //       });
-
-  //   // Incrementing the view count
-  //   fetch(`http://localhost:4000/incrementViewCount`, {
-  //       method: 'POST',
-  //       headers: {
-  //           'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ postId: id }),
-  //   });
-  // }, [id]);
-
-  // useEffect(() => {
-  //   // Fetching view count for the post
-  //   const fetchViewCount = async () => {
-  //     const response = await fetch(`http://localhost:4000/getViewCount?postId=${id}`);
-  //     const data = await response.json();
-  //     setViewCount(data.viewCount);
-  //   };
-  //   fetchViewCount();
-  // }, [id]);
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(shareableLink)
+      .then(() => setCopySuccess(true))
+      .catch((err) => console.error('Failed to copy:', err));
+  };
 
   if (!postInfo) return '';
 
@@ -100,7 +83,15 @@ export default function PostDetailPage() {
             <div dangerouslySetInnerHTML={{__html:postInfo.content}} />
           </div>
             
-          
+          {/* Display shareable link if available */}
+          {shareableLink && (
+            <div className="shareable-link">
+              <p>Shareable Link:</p>
+              <input type="text" value={shareableLink} readOnly />
+              <button onClick={copyToClipboard}>Copy Link</button>
+              {copySuccess && <span style={{ color: 'green' }}>Copied!</span>}
+            </div>
+          )}
         </div>
         <PostFooter />
       </>
