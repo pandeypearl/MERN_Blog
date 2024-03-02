@@ -361,3 +361,54 @@ div.post-wrapper a.edit-btn svg{
   color: var(--darkest);
   box-shadow: 3px 3px 3px rgb(0,0,0,0.4);
 }
+
+.shareable-link{
+  margin: 50px 0;
+}
+
+.shareable-link p{
+  background-color: var(--light);
+  color: var(--darkest);
+  text-align: center;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.shareable-link-container {
+  display: flex;
+  align-items: center;
+  /* flex-wrap: wrap; */
+}
+
+.shareable-link-container button{
+  border-radius: 4px;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  box-shadow: var(--btn-shadow);
+  padding: 8px;
+  cursor: pointer;
+  background-color: var(--darkest);
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.shareable-link-container button:hover{
+  background-color: var(--brand);
+  color: var(--darkest);
+}
+
+.shareable-link-container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.shareable-link-container input[type="text"]:focus {
+  outline: none;
+}
+
+.shareable-link-container input[type="text"][readonly] {
+  background-color: #f0f0f0;
+}

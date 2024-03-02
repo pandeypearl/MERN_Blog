@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Link, useParams, useLocation } from 'react-router-dom';
 import {formatISO9075} from 'date-fns';
 import { UserContext } from "../utils/UserContext";
 import PostFooter from "../components/PostFooter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faShareNodes, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export default function PostDetailPage() {
   const {userInfo} = useContext(UserContext);
@@ -13,6 +13,7 @@ export default function PostDetailPage() {
   const location = useLocation();
   // const [shareableLink, setShareableLink] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     // Fetching post details including view count
@@ -49,7 +50,12 @@ export default function PostDetailPage() {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(postInfo.sharableLink)
-      .then(() => setCopySuccess(true))
+      .then(() => {
+        setCopySuccess(true);
+        setTimeout(() => {
+          setCopySuccess(false);
+        }, 5000);
+      })
       .catch((err) => console.error('Failed to copy:', err));
   };
 
@@ -88,10 +94,19 @@ export default function PostDetailPage() {
           {/* Display shareable link if available */}
           {postInfo.sharableLink && (
             <div className="shareable-link">
-              <p>Shareable Link:</p>
-              <input type="text" value={postInfo.sharableLink} readOnly />
-              <button onClick={copyToClipboard}>Copy Link</button>
-              {copySuccess && <span style={{ color: 'green' }}>Copied!</span>}
+              <p><FontAwesomeIcon icon={faShareNodes} /> Share Post</p>
+              <div className='shareable-link-container'>
+                <input type="text" value={postInfo.sharableLink} readOnly ref={inputRef} />
+                <button onClick={copyToClipboard} className='copy-link-btn'>
+                  {copySuccess ? 
+                    (
+                      <FontAwesomeIcon icon={faCheck} />
+                    ) : (
+                      <FontAwesomeIcon icon={faCopy} />
+                    )
+                  }
+                </button>
+              </div>
             </div>
           )}
         </div>
