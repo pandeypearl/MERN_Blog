@@ -20,7 +20,10 @@ function App() {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/new-post' element={<CreatePost />} />
-            <Route path='/post/:id' element={<PostDetailPage />} />
+            <Route path='/post/:id' element={<PostDetailPage />}>
+              <Route index element={<PostDetailPage />} />
+              <Route path='share/:shareId' element={<PostDetailPage />} />
+            </Route>
             <Route path='/edit/:id' element={<EditPostPage />} />
           </Route>
         </Routes>

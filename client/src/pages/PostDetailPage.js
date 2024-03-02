@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import {formatISO9075} from 'date-fns';
 import { UserContext } from "../utils/UserContext";
 import PostFooter from "../components/PostFooter";
@@ -8,8 +8,9 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 export default function PostDetailPage() {
   const {userInfo} = useContext(UserContext);
-  const {id} = useParams();
+  const {id, shareId} = useParams();
   const [postInfo, setPostInfo] = useState(null);
+  const location = useLocation();
   // const [shareableLink, setShareableLink] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
 
@@ -19,7 +20,8 @@ export default function PostDetailPage() {
       try {
         const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]; // Get the JWT token from cookies
         console.log('Token:', token);
-        const response = await fetch(`http://localhost:4000/post/${id}`);
+        // const response = await fetch(`http://localhost:4000/post/${id}`);
+        const response = await fetch(`http://localhost:4000/post/${shareId ? `${id}/share/${shareId}` : id}`);
         const postData = await response.json();
         setPostInfo(postData);
 
@@ -43,7 +45,7 @@ export default function PostDetailPage() {
     };
 
     fetchPostDetails();
-  }, [id]);
+  }, [id, shareId, location]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(postInfo.sharableLink)
