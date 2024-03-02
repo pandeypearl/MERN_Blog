@@ -10,7 +10,7 @@ export default function PostDetailPage() {
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   const [postInfo, setPostInfo] = useState(null);
-  const [shareableLink, setShareableLink] = useState(null);
+  // const [shareableLink, setShareableLink] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
@@ -34,9 +34,9 @@ export default function PostDetailPage() {
         });
 
         // Fetch shareable link when component mounts
-        const shareResponse = await fetch(`http://localhost:4000/post/${id}/share`);
-        const shareData = await shareResponse.json();
-        setShareableLink(shareData.sharableLink);
+        // const shareResponse = await fetch(`http://localhost:4000/post/${id}/share`);
+        // const shareData = await shareResponse.json();
+        // setShareableLink(shareData.sharableLink);
       } catch (error) {
         console.error('Error fetching post details:', error);
       }
@@ -46,7 +46,7 @@ export default function PostDetailPage() {
   }, [id]);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(shareableLink)
+    navigator.clipboard.writeText(postInfo.sharableLink)
       .then(() => setCopySuccess(true))
       .catch((err) => console.error('Failed to copy:', err));
   };
@@ -84,10 +84,10 @@ export default function PostDetailPage() {
           </div>
             
           {/* Display shareable link if available */}
-          {shareableLink && (
+          {postInfo.sharableLink && (
             <div className="shareable-link">
               <p>Shareable Link:</p>
-              <input type="text" value={shareableLink} readOnly />
+              <input type="text" value={postInfo.sharableLink} readOnly />
               <button onClick={copyToClipboard}>Copy Link</button>
               {copySuccess && <span style={{ color: 'green' }}>Copied!</span>}
             </div>

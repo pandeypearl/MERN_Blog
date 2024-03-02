@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 const salt = bcrypt.genSaltSync(10);
 const secret = 'adfjsdfhkadsfaksdfbdfdhf';
@@ -76,7 +77,8 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
   const {token} = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
-    const {title,summary, content} = req.body;
+    const {title, summary, content} = req.body;
+    // const sharableLink = generateSharableLink();
     const postDoc = await Post.create({
       title,
       summary,
@@ -84,8 +86,16 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
       cover:newPath,
       author:info.id,
       viewCount: 0,
-      sharableLink,
+      // sharableLink,
     });
+
+    // Generating unique sharable link
+    const uniqueId = uuidv4();
+    const sharableLink = `http://localhost:3000/post/${postDoc._id}/share/${uniqueId}`;
+    
+    // Updating post with sharable link
+    await postDoc.updateOne({ sharableLink });
+
     res.json(postDoc);
   });
 });
@@ -109,6 +119,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
     if (!isAuthor) {
       return res.status(400).json('You do not have permission to edit this post')
     }
+    const sharableLink = generateSharableLink();
     await postDoc.updateOne({
       title, 
       summary, 
@@ -169,19 +180,43 @@ app.post('/post/:id/updateViewCount', async (req, res) => {
   }
 });
 
-app.post('/post/:id/share', async (req, res) => {
-  const { id } = req.params;
+// Helper function to generate sharable link
+function generateSharableLink() {
+  const uniqueId = uuidv4();
+  return `http:localhost:3000/post/${id}/share/${uniqueId}`;
+}
 
-  try{
-    // Generating unique sharable link
-    const uniqueId = shortid.generate();
-    const sharableLink = `http:localhost:3000/share/${uniqueId}`;
+// app.post('/post/:id/share', async (req, res) => {
+//   try{
+//     const { id } = req.params;
+//     // Generating unique sharable link
+//     const uniqueId = uuidv4();
+//     const sharableLink = `http:localhost:3000/post/${id}/share/${uniqueId}`;
 
-    // Updating post with sharable link
-    await Post.findByIdAndUpdate(id, { sharableLink });
-    res.status(200).json({ sharableLink });
+//     // Updating post with sharable link
+//     await Post.findByIdAndUpdate(id, { sharableLink });
+//     res.status(200).json({ sharableLink });
+//   } catch (error) {
+//     console.error('Error sharing post:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+// Backend route to handle visits to sharable link
+app.get('/post/:postId/share/:shareId', async (req, res) => {
+  const { postId } = req.params;
+
+  try {
+    // Fetch the post associated with the postId
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    // Render the post page or send the post data to the frontend
+    res.json(post);
   } catch (error) {
-    console.error('Error sharing post:', error);
+    console.error('Error fetching post:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
