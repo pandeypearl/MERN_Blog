@@ -1,44 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @font-face{
   font-family: 'Roboto', sans-serif;
-  src: url(./assets/fonts/Roboto-Thin.ttf) format('truetype');
+  src: url('./assets/fonts/Roboto-Thin.ttf') format('ttf');
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face{
   font-family: 'Roboto', sans-serif;
-  src: url(./assets/fonts/Roboto-Light.ttf) format('truetype');
+  src: url('./assets/fonts/Roboto-Light.ttf') format('ttf');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face{
   font-family: 'Roboto', sans-serif;
-  src: url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
+  src: url('./assets/fonts/Roboto-Regular.ttf') format('ttf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face{
   font-family: 'Roboto', sans-serif;
-  src: url(./assets/fonts/Roboto-Medium.ttf) format('truetype');
+  src: url('./assets/fonts/Roboto-Medium.ttf') format('ttf');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face{
   font-family: 'Roboto', sans-serif;
-  src: url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
+  src: url('./assets/fonts/Roboto-Bold.ttf') format('ttf');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face{
   font-family: 'Roboto', sans-serif;
-  src: url(./assets/fonts/Roboto-Black.ttf) format('truetype');
+  src: url('./assets/fonts/Roboto-Black.ttf') format('ttf');
   font-weight: 900;
   font-style: normal;
 }
+
+@font-face{
+  font-family: 'Pacifico', cursive;
+  src: local('Pacifico'), url(./assets/fonts/Pacifico-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Satisfy', cursive;
+  src: url('./assets/fonts/Satisfy-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 
 * {
   box-sizing: border-box;
@@ -71,13 +90,64 @@
 
 html{
   font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
 }
 
 body{
   color: var(--lightest);
   background-color: var(--darkest);
   font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
 }
+
+/* Custom Scrollbar */
+
+/* Works in WebKit/Blink Browsers (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  color: var(--brand);
+  background-color: var(--darkest);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--brand);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--darkest); /* Set the background color of the track to transparent */
+}
+
+/* Works in Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) var(--darkest);
+}
+
+/* Works in Edge and IE 11 */
+*::-ms-scrollbar {
+  width: 12px;
+}
+
+*::-ms-scrollbar-thumb {
+  background-color: var(--brand);
+  border-radius: 6px;
+}
+
+*::-ms-scrollbar-track {
+  background-color: var(--darkest);
+}
+
+/* Standard scrollbar styling for other browsers (may not work in all) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) var(--darkest);
+}
+
 
 
 img{
@@ -169,9 +239,9 @@ header nav .user svg{
 
 
 header a.logo{
-  font-weight: 900;
+  font-family: 'Satisfy', cursive;
+  /* font-weight: 400; */
   font-size: 1.6rem;
-  color: var(--brand);
 }
 
 header nav{
