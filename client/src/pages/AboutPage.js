@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import {  faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../assets/images/Pretty_Pandey_Profile.webp';
+import EmailLink from '../components/EmailLink';
 
 export default function AboutPage() {
     return (
@@ -10,9 +11,11 @@ export default function AboutPage() {
                 <img src={profileImage} alt='Profile'/>
                 <ul>
                     <li>
-                        <a href=''>
-                            <FontAwesomeIcon icon={faEnvelope} color='#9D68FF' />Get In Touch
-                        </a>
+                        <EmailLink 
+                            emailAddress='blog@prettypandey.tech' 
+                            subject='Blog Post: Title of Blog Post Here'
+                            body='Please do not forget to reference the title of the blog post in the subject.'
+                        />
                     </li>
                     <li>
                         <a href='https://www.prettypandey.tech' target='_blank' rel="noreferrer">
