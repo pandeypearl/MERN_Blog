@@ -1,4 +1,5 @@
 import Header from './Header';
+import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 import ToggleButton from './ToggleButton';
 import { useLightDarkMode } from '../utils/LightDarkModeContext';
@@ -22,6 +23,7 @@ export default function Layout () {
       <ToggleButton />
       <Header />
       <Outlet />
+      <Footer />
     </main>
   );
 }

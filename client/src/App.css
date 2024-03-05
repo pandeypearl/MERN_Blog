@@ -527,3 +527,45 @@ div.post-wrapper a.edit-btn svg{
 .shareable-link-container input[type="text"][readonly] {
   background-color: #f0f0f0;
 }
+
+div.footer-wrapper{
+  width: 100%;
+  margin-top: 200px;
+}
+
+div.footer-wrapper a{
+  color: var(--lightest);
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+div.footer-wrapper a:hover{
+  color: var(--light);
+  text-decoration: underline;
+}
+
+div.footer-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+div.footer-wrapper hr{
+  border:none;
+  border-bottom: 1px solid var(--brand);
+}
+
+p.site-date{
+  text-align: center;
+  font-weight: 400;
+  margin-top: 50px;
+}
+
+p.site-date .footer-logo{
+  font-family: 'Satisfy', cursive;
+  font-weight: 900;
+  margin: 0 10px;
+}
