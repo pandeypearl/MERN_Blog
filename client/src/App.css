@@ -217,7 +217,7 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   margin-top: 20px;
 }
 
@@ -287,11 +287,7 @@ div.post div.image img{
   object-position: center center;
 }
 
-@media (max-width: 600px) {
-  div.post{
-    grid-template-columns: 1fr;
-  }
-}
+
   
 div.post div.content h2{
   margin: 0;
@@ -572,4 +568,63 @@ p.site-date .footer-logo{
   font-family: 'Satisfy', cursive;
   font-weight: 900;
   margin: 0 10px;
+}
+
+div.about-wrapper{
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  
+}
+
+div.about-wrapper div.profile{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.about-wrapper div.profile img{
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+} 
+
+div.about-wrapper div.profile ul{
+  list-style-type: none;
+  padding: 0;
+  display:flex;
+  flex-direction: column;
+  gap: 16px;
+} 
+
+div.about-wrapper div.profile ul a{
+  color: var(--lightest);
+  text-decoration: none;
+  font-size: 0.8rem;
+  display: flex;
+  gap: 10px;
+  transition: text-decoration 0.3s ease-in-out;
+}
+
+div.about-wrapper div.profile ul a:hover{
+  color: var(--light);
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+div.about-wrapper div.text{
+  flex: 1;
+}
+
+div.about-wrapper div.text p{
+  line-height: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  div.post{
+    grid-template-columns: 1fr;
+  }
 }
