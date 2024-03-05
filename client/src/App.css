@@ -538,14 +538,18 @@ div.footer-wrapper a{
   text-decoration: none;
   display: flex;
   gap: 10px;
-  margin: 10px 0;
+  margin: 15px 0;
   font-weight: 500;
   font-size: 0.8rem;
+  transition: text-decoration 0.3s ease-in-out;
 }
 
 div.footer-wrapper a:hover{
   color: var(--light);
   text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 
 div.footer-container{
