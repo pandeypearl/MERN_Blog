@@ -5,6 +5,7 @@ import { UserContext } from "../utils/UserContext";
 import PostFooter from "../components/PostFooter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faShareNodes, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
+import EmailLink from "../components/EmailLink";
 
 export default function PostDetailPage() {
   const {userInfo} = useContext(UserContext);
@@ -90,6 +91,15 @@ export default function PostDetailPage() {
           <div className="post-content">
             <div dangerouslySetInnerHTML={{__html:postInfo.content}} />
           </div>
+
+          <p className='post-email'>
+            <span>Would you like to have a conversation about this post?</span>
+            <EmailLink
+              emailAddress='blog@prettypandey.tech' 
+              subject='Blog Post: Title of Blog Post Here'
+              body='Please do not forget to reference the title of the blog post in the subject.'
+            />
+          </p>
             
           {/* Display shareable link if available */}
           {postInfo.sharableLink && (

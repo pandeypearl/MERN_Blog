@@ -439,8 +439,38 @@ div.post-wrapper a.edit-btn svg{
   height: 20px;
 }
 
+/* Post Email */
+p.post-email{
+  text-align: center;
+  margin: 100px 0;
+}
+p.post-email span{
+  display: block;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+p.post-email a{
+  color: var(--lightest);
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  transition: text-decoration 0.3s ease-in-out;
+}
+
+p.post-email a:hover{
+  color: var(--light);
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+/* Post Footer */
 .post-footer{
-  margin: 50px 0;
+  margin: 100px 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -448,7 +478,7 @@ div.post-wrapper a.edit-btn svg{
 }
 
 .post-footer p {
-  font-weight: 600;
+  font-weight: 400;
   width: 50%;
 }
 
