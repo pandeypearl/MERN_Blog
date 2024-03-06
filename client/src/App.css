@@ -149,7 +149,6 @@ body{
 }
 
 
-
 img{
   max-width: 100%;
 }
@@ -244,16 +243,18 @@ header a.logo{
   font-size: 1.6rem;
 }
 
-header nav{
+header nav, .intro-links{
   display: flex;
-  gap: 15px;
+  gap: 30px;
+  align-items: center;
 }
 
-header nav a{
+header nav a, .about-link{
   transition: text-decoration 0.3s ease-in-out;
+  font-weight: 500;
 }
 
-header nav a:hover{
+header nav a:hover, .about-link:hover{
   text-decoration: underline;
   text-decoration-color: var(--brand);
   text-underline-offset: 6px;
@@ -288,7 +289,6 @@ div.post div.image img{
 }
 
 
-  
 div.post div.content h2{
   margin: 0;
   font-size: 1.6rem;

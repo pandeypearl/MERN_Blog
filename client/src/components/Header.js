@@ -27,13 +27,17 @@ export default function Header() {
 
   return (
     <header>
-      <Link to='/' className='logo'>PrettyTech</Link>
+      <div className='intro-links'>
+        <Link to='/' className='logo'>PrettyTech</Link>
+        <Link to='/about' className='about-link'>About</Link>
+      </div>
+      
       
       <nav>
       {username && (
         <>
-          
           <Link to='/new-post'>New Post</Link>
+          <Link to='/register'>Register</Link>
           <a href='' onClick={logout}>Logout</a>
           <span className='user'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -46,7 +50,6 @@ export default function Header() {
       {!username && (
         <>
           <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
         </>
       )}
       </nav>
