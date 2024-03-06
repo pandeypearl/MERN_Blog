@@ -268,6 +268,7 @@ header nav a:hover, .about-link:hover{
 
 .post-link:hover div.post{
   border: 1px solid rgb(157, 104, 255, 0.4);
+  
 }
 
 div.post{
@@ -275,23 +276,35 @@ div.post{
   grid-template-columns: .9fr 1.1fr;
   gap: 10px;
   margin-bottom: 50px;
-  box-shadow: var(--shadow);
-  border: 1px solid rgb(0,0,0,0.1);
   padding: 10px;
   transition: border 0.3s ease-in-out;
+  box-shadow: var(--shadow);
+  border: 1px solid rgb(0,0,0,0.1);
+  border-radius: 20px;
 }
+
 
 div.post div.image img{
   height: 300px;
   width: 100%;
   object-fit: cover;
   object-position: center center;
+  border-radius: 20px;
+}
+
+div.post div.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-right: 10px;
 }
 
 
 div.post div.content h2{
   margin: 0;
   font-size: 1.6rem;
+  font-weight: 900;
 }
 
 div.post div.content a{
@@ -304,21 +317,27 @@ div.post div.content p.info{
   color: var(--mid);
   font-size: 0.8rem;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
 div.post div.content p.info time{
-  font-weight: 200;
+  font-weight: 300;
 }
 
 
 div.post div.content p.info a.author{
-  color: var(--brand);
   font-weight: 600;
+  color: var(--brand);
 }
 
-div.post div.content p.info .view-count{
+div.post div.content  .post-views{
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  align-items: center;
   color: var(--brand);
+  font-size: 0.8rem;
 }
 
 div.post div.content p.description{
