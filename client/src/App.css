@@ -239,8 +239,12 @@ header nav .user svg{
 
 header a.logo{
   font-family: 'Satisfy', cursive;
-  /* font-weight: 400; */
   font-size: 1.6rem;
+  transition: color 0.3s ease-in-out;
+}
+
+header a.logo:hover{
+  color: var(--brand);
 }
 
 header nav{
