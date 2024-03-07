@@ -27,15 +27,15 @@ export default function Header() {
 
   return (
     <header>
-      <div className='intro-links'>
+      <div>
         <Link to='/' className='logo'>PrettyTech</Link>
-        <Link to='/about' className='about-link'>About</Link>
       </div>
       
       
       <nav>
       {username && (
         <>
+          <Link to='/about' className='about-link'>About</Link>
           <Link to='/new-post'>New Post</Link>
           <Link to='/register'>Register</Link>
           <a href='' onClick={logout}>Logout</a>
@@ -49,6 +49,7 @@ export default function Header() {
       )}
       {!username && (
         <>
+          <Link to='/about' className='about-link'>About</Link>
           <Link to='/login'>Login</Link>
         </>
       )}
