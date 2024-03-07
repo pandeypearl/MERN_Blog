@@ -2,9 +2,9 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { Link, useParams, useLocation } from 'react-router-dom';
 import {formatISO9075} from 'date-fns';
 import { UserContext } from "../utils/UserContext";
-import PostFooter from "../components/PostFooter";
+// import PostFooter from "../components/PostFooter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faShareNodes, faCopy, faCheck, faMessage, faMugSaucer } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faCopy, faCheck, faMessage, faMugSaucer } from '@fortawesome/free-solid-svg-icons';
 import EmailLink from "../components/EmailLink";
 
 export default function PostDetailPage() {
@@ -94,7 +94,6 @@ export default function PostDetailPage() {
               {/* Display shareable link if available */}
               {postInfo.sharableLink && (
                 <div className="shareable-link">
-                  {/* <p><FontAwesomeIcon icon={faShareNodes} /> Share Post</p> */}
                   <div className='shareable-link-container'>
                     <input type="text" value={postInfo.sharableLink} readOnly ref={inputRef} />
                     <button onClick={copyToClipboard} className='copy-link-btn'>

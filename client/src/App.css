@@ -435,6 +435,10 @@ div.post-content p{
   line-height: 1.6rem;
 }
 
+div.post-content img{
+  border-radius: 20px;
+}
+
 div.edit{
   margin: 20px 0;
 }
@@ -508,7 +512,6 @@ div.post-wrapper a.edit-btn svg{
 
 .post-footer p {
   font-weight: 400;
-  width: 50%;
 }
 
 .post-footer a{

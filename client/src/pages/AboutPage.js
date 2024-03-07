@@ -3,6 +3,7 @@ import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import {  faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../assets/images/Pretty_Pandey_Profile.webp';
 import EmailLink from '../components/EmailLink';
+import PostFooter from '../components/PostFooter';
 
 export default function AboutPage() {
     return (
@@ -49,6 +50,8 @@ export default function AboutPage() {
                 </p>
                 <p>So, grab a cup of your favorite beverage, take a seat, and let's explore the fascinating world of tech together.
                     Thanks for being part of this journey!</p>
+
+                <PostFooter />
             </div>
         </div>
     );
