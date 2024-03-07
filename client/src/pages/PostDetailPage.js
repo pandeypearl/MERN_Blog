@@ -4,7 +4,7 @@ import {formatISO9075} from 'date-fns';
 import { UserContext } from "../utils/UserContext";
 import PostFooter from "../components/PostFooter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faShareNodes, faCopy, faCheck, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faShareNodes, faCopy, faCheck, faMessage, faMugSaucer } from '@fortawesome/free-solid-svg-icons';
 import EmailLink from "../components/EmailLink";
 
 export default function PostDetailPage() {
@@ -75,7 +75,7 @@ export default function PostDetailPage() {
 
           <div className='post-info'>
             <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
-            <div className='author'>Post by @{postInfo.author.username}</div>
+            <div className='author'>@{postInfo.author.username}</div>
             
           </div>
           
@@ -88,43 +88,47 @@ export default function PostDetailPage() {
             <div dangerouslySetInnerHTML={{__html:postInfo.content}} />
           </div>
 
-          <p className='post-email'>
-            <span>Would you like to have a conversation about this post?</span>
-            <EmailLink
-              emailAddress='blog@prettypandey.tech' 
-              subject='Blog Post: Title of Blog Post Here'
-              body='Please do not forget to reference the title of the blog post in the subject.'
-              buttonText={<FontAwesomeIcon icon={faEnvelope} color='#9D68FF' />}
-            />
-          </p>
-
           <div className='post-interaction'>
-            <div className='view-count'><FontAwesomeIcon icon={faEye} color='#9D68FF' /> {postInfo.viewCount}</div>
-            <div>
+            <div className='view-count'><small><FontAwesomeIcon icon={faEye} /> {postInfo.viewCount}</small></div>
+            <div className='post-btns'> 
+              {/* Display shareable link if available */}
+              {postInfo.sharableLink && (
+                <div className="shareable-link">
+                  {/* <p><FontAwesomeIcon icon={faShareNodes} /> Share Post</p> */}
+                  <div className='shareable-link-container'>
+                    <input type="text" value={postInfo.sharableLink} readOnly ref={inputRef} />
+                    <button onClick={copyToClipboard} className='copy-link-btn'>
+                      {copySuccess ? 
+                        (
+                          <FontAwesomeIcon icon={faCheck} />
+                        ) : (
+                          <FontAwesomeIcon icon={faCopy} />
+                        )
+                      }
+                    </button>
+                  </div>
+                </div>
+              )}
+              <div className='post-email post-int-btn'>
+                <EmailLink
+                  emailAddress='blog@prettypandey.tech' 
+                  subject='Blog Post: Title of Blog Post Here'
+                  body='Please do not forget to reference the title of the blog post in the subject.'
+                  buttonText={<FontAwesomeIcon icon={faMessage} />}
+                />
+              </div>
+              <div className='post-int-btn'>
+                <a href='https://www.buymeacoffee.com/prettypandey' target='_blank' rel="noopener noreferrer" > 
+                  <FontAwesomeIcon icon={faMugSaucer} />
+                </a>
+              </div>
               
             </div>
           </div>
             
-          {/* Display shareable link if available */}
-          {postInfo.sharableLink && (
-            <div className="shareable-link">
-              <p><FontAwesomeIcon icon={faShareNodes} /> Share Post</p>
-              <div className='shareable-link-container'>
-                <input type="text" value={postInfo.sharableLink} readOnly ref={inputRef} />
-                <button onClick={copyToClipboard} className='copy-link-btn'>
-                  {copySuccess ? 
-                    (
-                      <FontAwesomeIcon icon={faCheck} />
-                    ) : (
-                      <FontAwesomeIcon icon={faCopy} />
-                    )
-                  }
-                </button>
-              </div>
-            </div>
-          )}
+          
         </div>
-        <PostFooter />
+        {/* <PostFooter /> */}
       </>
         
     );
