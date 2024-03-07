@@ -4,7 +4,7 @@ import {formatISO9075} from 'date-fns';
 import { UserContext } from "../utils/UserContext";
 import PostFooter from "../components/PostFooter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faShareNodes, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faShareNodes, faCopy, faCheck, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import EmailLink from "../components/EmailLink";
 
 export default function PostDetailPage() {
@@ -22,7 +22,6 @@ export default function PostDetailPage() {
       try {
         const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]; // Get the JWT token from cookies
         console.log('Token:', token);
-        // const response = await fetch(`http://localhost:4000/post/${id}`);
         const response = await fetch(`http://localhost:4000/post/${shareId ? `${id}/share/${shareId}` : id}`);
         const postData = await response.json();
         setPostInfo(postData);
@@ -37,10 +36,6 @@ export default function PostDetailPage() {
           body: JSON.stringify({}),
         });
 
-        // Fetch shareable link when component mounts
-        // const shareResponse = await fetch(`http://localhost:4000/post/${id}/share`);
-        // const shareData = await shareResponse.json();
-        // setShareableLink(shareData.sharableLink);
       } catch (error) {
         console.error('Error fetching post details:', error);
       }
@@ -65,14 +60,6 @@ export default function PostDetailPage() {
     return (
       <>
         <div className='post-wrapper'>
-        
-          <h1>{postInfo.title}</h1>
-
-          <div className='post-info'>
-            <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
-            <div className='author'>Post by @{postInfo.author.username}</div>
-            <div className='view-count'><FontAwesomeIcon icon={faEye} color='#9D68FF' /> {postInfo.viewCount}</div>
-          </div>
           {userInfo.id === postInfo.author._id && (
             <div className='edit'>
               <Link className='edit-btn' to={`/edit/${postInfo._id}`}>
@@ -83,6 +70,15 @@ export default function PostDetailPage() {
               </Link>
             </div>
           )}
+          
+          <h1>{postInfo.title}</h1>
+
+          <div className='post-info'>
+            <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
+            <div className='author'>Post by @{postInfo.author.username}</div>
+            
+          </div>
+          
 
           <div className='cover-image'>
             <img src={`http://localhost:4000/${postInfo.cover}`} alt='Cover' />
@@ -98,8 +94,16 @@ export default function PostDetailPage() {
               emailAddress='blog@prettypandey.tech' 
               subject='Blog Post: Title of Blog Post Here'
               body='Please do not forget to reference the title of the blog post in the subject.'
+              buttonText={<FontAwesomeIcon icon={faEnvelope} color='#9D68FF' />}
             />
           </p>
+
+          <div className='post-interaction'>
+            <div className='view-count'><FontAwesomeIcon icon={faEye} color='#9D68FF' /> {postInfo.viewCount}</div>
+            <div>
+              
+            </div>
+          </div>
             
           {/* Display shareable link if available */}
           {postInfo.sharableLink && (
