@@ -634,6 +634,7 @@ p.site-date .footer-logo{
   margin: 0 10px;
 }
 
+/* About Page */
 div.about-wrapper{
   display: flex;
   align-items: flex-start;
@@ -690,5 +691,22 @@ div.about-wrapper div.text p{
 @media (max-width: 600px) {
   div.post{
     grid-template-columns: 1fr;
+  }
+
+  div.about-wrapper{
+    flex-direction:column;
+  }
+
+  div.about-wrapper div.profile{
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  div.about-wrapper div.profile img{
+    width: 120px;
+    height: 120px;
   }
 }
