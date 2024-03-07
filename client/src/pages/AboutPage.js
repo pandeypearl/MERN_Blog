@@ -1,11 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import {  faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../assets/images/Pretty_Pandey_Profile.webp';
 import EmailLink from '../components/EmailLink';
 import PostFooter from '../components/PostFooter';
 
 export default function AboutPage() {
+  const buttonText = (
+    <>
+      <FontAwesomeIcon icon={faEnvelope} color='#9D68FF'/>
+      Get in Touch
+    </>
+  )
     return (
         <div className='about-wrapper'>
             <div className='profile'>
@@ -27,6 +33,14 @@ export default function AboutPage() {
                         <a href='https://www.twitter.com/prettyppandey' target='_blank' rel="noreferrer">
                             <FontAwesomeIcon icon={faXTwitter} color='#9D68FF' />Follow Me On Twitter/X
                         </a>
+                    </li>
+                    <li>
+                      <EmailLink 
+                        emailAddress='blog@prettypandey.tech' 
+                        subject='Blog Post: Title of Blog Post Here'
+                        body='Please do not forget to reference the title of the blog post in the subject.'
+                        buttonText={buttonText}
+                    />
                     </li>
                 </ul>
             </div>
